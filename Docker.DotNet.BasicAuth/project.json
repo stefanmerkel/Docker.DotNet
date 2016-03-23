@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0-*",
+  "description": "Docker.DotNet.BasicAuth",
+
+  "dependencies": {
+    "Docker.DotNet": "1.0.0-*",
+    "System.Security.SecureString": "4.0.0-beta-23019"
+  },
+
+  "frameworks": {
+    "dnxcore50": { }
+  }
+}
