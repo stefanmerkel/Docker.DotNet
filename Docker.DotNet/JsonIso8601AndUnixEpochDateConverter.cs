@@ -20,7 +20,7 @@ namespace Docker.DotNet
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
         {
-            bool isNullableType = (objectType.IsGenericType && objectType.GetGenericTypeDefinition() == typeof (Nullable<>));
+            bool isNullableType = (objectType.IsConstructedGenericType && objectType.GetGenericTypeDefinition() == typeof (Nullable<>));
             object value = reader.Value;
 
             DateTime result;

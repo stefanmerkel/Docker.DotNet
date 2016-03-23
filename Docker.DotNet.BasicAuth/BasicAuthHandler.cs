@@ -42,7 +42,7 @@ namespace Docker.DotNet.BasicAuth
             string authInfo = string.Format("{0}:{1}", ConvertToUnsecureString(_username),
                 ConvertToUnsecureString(_password));
 
-            return Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
+            return Convert.ToBase64String(Encoding.GetEncoding(0).GetBytes(authInfo));
         }
 
         private static string ConvertToUnsecureString(SecureString secureString)
@@ -51,7 +51,7 @@ namespace Docker.DotNet.BasicAuth
 
             try
             {
-                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(secureString);
+                unmanagedString = System.Security.SecureStringMarshal.SecureStringToCoTaskMemUnicode(secureString);
                 return Marshal.PtrToStringUni(unmanagedString);
             }
             finally

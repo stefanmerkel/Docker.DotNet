@@ -7,14 +7,13 @@ namespace Docker.DotNet.X509
 {
     public class CertificateCredentials : Credentials
     {
-        private readonly WebRequestHandler _handler;
+        private readonly WinHttpHandler _handler;
 
         public CertificateCredentials(X509Certificate2 clientCertificate)
         {
-            _handler = new WebRequestHandler()
+            _handler = new WinHttpHandler()
             {
-                ClientCertificateOptions = ClientCertificateOption.Manual,
-                UseDefaultCredentials = false
+                ClientCertificateOption = ClientCertificateOption.Manual,
             };
 
             _handler.ClientCertificates.Add(clientCertificate);
